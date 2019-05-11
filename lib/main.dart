@@ -26,8 +26,8 @@ class _LoginPageState extends State<LoginPage>  with SingleTickerProviderStateMi
   @override
   void initState() {
     // TODO: implement initState
-    logoAnimationController=new AnimationController(vsync: this, duration: Duration(milliseconds: 500));
-    logoAnimation=new CurvedAnimation(parent: logoAnimationController, curve: Curves.bounceOut);
+    logoAnimationController=new AnimationController(vsync: this, duration: Duration(milliseconds: 700));
+    logoAnimation=new CurvedAnimation(parent: logoAnimationController, curve: Curves.easeOut);
     logoAnimation.addListener( () => this.setState((){}) );
     logoAnimationController.forward();
     super.initState();
@@ -57,9 +57,36 @@ class _LoginPageState extends State<LoginPage>  with SingleTickerProviderStateMi
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     FlutterLogo(size: logoAnimation.value*100),
+                    Form(
+                        child: Theme(
 
+                            data: ThemeData(
+                                brightness: Brightness.dark,
+                                primarySwatch: Colors.teal,
+                                inputDecorationTheme: InputDecorationTheme(
+                                    labelStyle: TextStyle(
+                                        color: Colors.teal, fontSize: 20.0))),
 
+                            child: Container(
+                              margin: EdgeInsets.all(10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
 
+                                  TextFormField(
+                                    decoration: InputDecoration(
+                                        labelText: "Enter the Email address"
+                                    ),
+                                    keyboardType: TextInputType.emailAddress,
+                                  ),
+                                  TextFormField(
+                                      decoration: InputDecoration(
+                                          labelText: "Enter the Password")
+                                  ),
+                                ],),
+                            )
+                        )
+                    )
                   ],
                 ),
               )
