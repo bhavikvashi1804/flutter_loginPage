@@ -31,11 +31,15 @@ class _LoginPageState extends State<LoginPage> {
             image:new AssetImage('assets/bill.jpg'),
             fit: BoxFit.fill,
             //to fit image to whole screen
+            color: Colors.black87,
+            colorBlendMode: BlendMode.darken,
+            //to change opacity of background image
+
           ),
           Center(
               child: Container(
                 margin: EdgeInsets.all(20.0),
-                color: Colors.purpleAccent,
+
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
