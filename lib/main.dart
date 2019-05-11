@@ -17,8 +17,21 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>  with SingleTickerProviderStateMixin{
 
+  //here we use SingleTickerProviderStateMixin because only one widget needs animation
+  AnimationController logoAnimationController;
+  Animation<double> logoAnimation;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    logoAnimationController=new AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    logoAnimation=new CurvedAnimation(parent: logoAnimationController, curve: Curves.bounceOut);
+    logoAnimation.addListener( () => this.setState((){}) );
+    logoAnimationController.forward();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,8 +56,9 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text("User Name", style: TextStyle(color: Colors.orange)),
-                    Text("Password",style: TextStyle(color: Colors.orange)),
+                    FlutterLogo(size: logoAnimation.value*100),
+
+
 
                   ],
                 ),
