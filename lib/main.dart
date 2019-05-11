@@ -83,6 +83,15 @@ class _LoginPageState extends State<LoginPage>  with SingleTickerProviderStateMi
                                       decoration: InputDecoration(
                                           labelText: "Enter the Password")
                                   ),
+                                  Padding( padding:EdgeInsets.only(top:20.0)),
+                                  ButtonTheme(
+                                    buttonColor: Colors.purple,
+                                    height: 45,
+                                    splashColor: Colors.teal,
+                                    child: RaisedButton(onPressed:() =>{},child:Text("Submit", style: TextStyle(color: Colors.white),) ),
+
+                                  )
+
                                 ],),
                             )
                         )
